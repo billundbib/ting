@@ -17,7 +17,8 @@ function ting_search_autocomplete_js() {
 		}		
 		else
 		{
-			module_load_include('client.inc', 'ting');
+      $path = drupal_get_path('module', 'ting');
+      require $path . '/ting.client.inc';
 			
 			$terms = array();
 

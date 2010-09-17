@@ -34,8 +34,9 @@ function ting_search_pages_object_redirect($local_id) {
  * JSON callback to search Ting.
  */
 function ting_search_pages_ting_js() {
-  module_load_include('client.inc', 'ting');
-  
+  $path = drupal_get_path('module', 'ting');
+  require $path . '/ting.client.inc';
+	  
   //Get users base query
   $query = $_REQUEST['query'];
   if (!$query) {
@@ -72,7 +73,7 @@ function ting_search_pages_ting_js() {
     $page = isset($_REQUEST['page']) ? intval($_REQUEST['page']) : 1;
     $resultsPerPage = 10;
     $searchResult = ting_do_search($query, $page, $resultsPerPage, $options);
-
+    
     $result = array(
       'page' => $page,
       'resultsPerPage' => $resultsPerPage,

@@ -374,3 +374,17 @@ function ting_search_imagecache_default_presets() {
 	
 	return $presets;
 }
+
+/**
+ * Implementation of hook_trampoline
+ */
+function ting_search_trampoline() {
+	$items = array();
+	
+	$items['ting/search/js'] = array(
+    'includes' => array(drupal_get_path('module', 'ting_covers').'/ting_covers.module'),
+    'theme_hooks' => array('ting_search_collection')
+	);
+	
+	return $items;
+}
